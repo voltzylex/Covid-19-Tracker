@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:whatsapp_ui/Services/Utilites/states_services.dart';
+import 'package:whatsapp_ui/View/detail_screen.dart';
 
 class CountryScreen extends StatefulWidget {
   const CountryScreen({Key? key}) : super(key: key);
@@ -83,52 +84,111 @@ class _CountryScreenState extends State<CountryScreen> {
                             if (textController.text.isEmpty) {
                               return Column(
                                 children: [
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        vertical: 10),
-                                    child: ListTile(
-                                      leading: Image(
-                                        height: 100,
-                                        width: 100,
-                                        image: NetworkImage(
-                                          snapshot.data![index]['countryInfo']
-                                                  ['flag']
-                                              .toString(),
+                                  InkWell(
+                                    onTap: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => DetailScreeen(
+                                            name: snapshot.data![index]
+                                                ['country'],
+                                            image: snapshot.data![index]
+                                                ['countryInfo']['flag'],
+                                            active: snapshot.data![index]
+                                                ['active'],
+                                            critical: snapshot.data![index]
+                                                ['critical'],
+                                            test: snapshot.data![index]
+                                                ['tests'],
+                                            todayRecovered: snapshot
+                                                .data![index]['todayRecovered'],
+                                            totalCases: snapshot.data![index]
+                                                ['cases'],
+                                            totalDeaths: snapshot.data![index]
+                                                ['deaths'],
+                                            totalRecovered: snapshot
+                                                .data![index]['recovered'],
+                                          ),
                                         ),
+                                      );
+                                    },
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          vertical: 10),
+                                      child: ListTile(
+                                        leading: Image(
+                                          height: 100,
+                                          width: 100,
+                                          image: NetworkImage(
+                                            snapshot.data![index]['countryInfo']
+                                                    ['flag']
+                                                .toString(),
+                                          ),
+                                        ),
+                                        title: Text(snapshot.data![index]
+                                                ["country"]
+                                            .toString()),
+                                        subtitle: Text(
+                                            "Total Cases : ${snapshot.data![index]["cases"]}"),
                                       ),
-                                      title: Text(snapshot.data![index]
-                                              ["country"]
-                                          .toString()),
-                                      subtitle: Text(
-                                          "Total Cases : ${snapshot.data![index]["cases"]}"),
                                     ),
                                   ),
                                 ],
                               );
-                            } 
-                            else if (name
+                            } else if (name
                                 .toLowerCase()
                                 .contains(textController.text.toLowerCase())) {
                               return Column(
                                 children: [
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        vertical: 10),
-                                    child: ListTile(
-                                      leading: Image(
-                                        height: 100,
-                                        width: 100,
-                                        image: NetworkImage(
-                                          snapshot.data![index]['countryInfo']
-                                                  ['flag']
-                                              .toString(),
+                                  InkWell(
+                                    onTap: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  DetailScreeen(
+                                                    name: snapshot.data![index]
+                                                        ['country'],
+                                                    image: snapshot.data![index]
+                                                        ['countryInfo']['flag'],
+                                                    active: snapshot
+                                                        .data![index]['active'],
+                                                    critical:
+                                                        snapshot.data![index]
+                                                            ['critical'],
+                                                    test: snapshot.data![index]
+                                                        ['tests'],
+                                                    todayRecovered:
+                                                        snapshot.data![index]
+                                                            ['todayRecovered'],
+                                                    totalCases: snapshot
+                                                        .data![index]['cases'],
+                                                    totalDeaths: snapshot
+                                                        .data![index]['deaths'],
+                                                    totalRecovered:
+                                                        snapshot.data![index]
+                                                            ['recovered'],
+                                                  )));
+                                    },
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          vertical: 10),
+                                      child: ListTile(
+                                        leading: Image(
+                                          height: 100,
+                                          width: 100,
+                                          image: NetworkImage(
+                                            snapshot.data![index]['countryInfo']
+                                                    ['flag']
+                                                .toString(),
+                                          ),
                                         ),
+                                        title: Text(snapshot.data![index]
+                                                ["country"]
+                                            .toString()),
+                                        subtitle: Text(
+                                            "Total Cases : ${snapshot.data![index]["cases"]}"),
                                       ),
-                                      title: Text(snapshot.data![index]
-                                              ["country"]
-                                          .toString()),
-                                      subtitle: Text(
-                                          "Total Cases : ${snapshot.data![index]["cases"]}"),
                                     ),
                                   ),
                                 ],

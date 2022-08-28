@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:whatsapp_ui/Services/Utilites/app_url.dart';
-import 'package:whatsapp_ui/View/country_selection.dart';
 import '../../Model/worldModel.dart';
 
 class StatesServices {
