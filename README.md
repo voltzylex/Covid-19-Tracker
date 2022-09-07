@@ -1,6 +1,5 @@
-# whatsapp_ui
 
-A new Flutter project.
+## Covid Tracker App
 
 ## Getting Started
 
